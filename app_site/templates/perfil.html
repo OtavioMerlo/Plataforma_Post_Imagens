@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon_site/icon_perfil.png') }}" type="image/x-icon">
+    <title>Perfil</title>
+</head>
+<body>
+    {% include "navbar.html" %}
+    {% if dono %}
+        <h1>Sejá Bem-Vindo {{ usuario.username }}</h1>
+
+        {% else %}
+        <h1>Perfil do {{ usuario.username }}</h1>
+    {% endif %}
+    {% if form %}
+        <form enctype="multipart/form-data" method="POST">
+            {{ form.csrf_token }}
+                {{ form.foto() }}
+                {{ form.btn_confirm() }}
+        </form>
+    {% endif %}
+    <div class="feed-fotos">
+        {% for foto in usuario.pictures %}
+            <div class="image-feed">
+                <a href="{{ url_for('view_foto', id_foto=foto.id) }}">
+                    <img class="img-image-feed-perfil" src="{{ url_for('static', filename='fotos_post/{}'.format(foto.imagem)) }}" alt="">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        const container_imagem = document.querySelectorAll(".image-feed");
+        setTimeout(() => {
+            container_imagem.forEach((imagem) => {
+            imagem.style.scale="1"; // Altera a escala
+            });
+        }, 100);
+    </script>
+</body>
+</html>

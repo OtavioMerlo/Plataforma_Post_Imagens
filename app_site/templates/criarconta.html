@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon_site/icon.png') }}" type="image/x-icon">
+    <title>Cria Conta | Site</title>
+</head>
+<body class="homepage">
+    <form class="cc-form" method="POST">
+        {{ form.csrf_token }}
+        <h1 class="Login">Criar Conta</h1>
+        <div class="input-login-container">
+            
+            {{ form.email( placeholder="Digite seu email" ) }}
+
+            
+            {{ form.nome( placeholder="Digite seu nome" ) }}
+
+            
+            {{ form.senha( placeholder="Digite seu senha" ) }}
+
+            {{ form.c_senha( placeholder="Confirme sua senha" ) }}
+        </div>
+
+        <div class="n-t-conta">
+            <p>Já tem uma conta clique <a href="{{ url_for('homepage') }}">aqui</a></p>
+        </div>
+
+            {{ form.btn_confirmCC( class="btn-login" ) }}
+    </form>
+
+    <script>
+        const formulario = document.querySelector(".cc-form");
+        setTimeout(()=>{
+            formulario.style.scale="1";
+        },1000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon_site/icon.png') }}" type="image/x-icon">
+    <title>FakePinterest</title>
+</head>
+<body class="homepage">
+    <form class="cc-form" method="POST" action="">
+        {{ form.csrf_token }}
+            <h1 class="Login">Login</h1>
+            <div class="input-login-container">
+                {{ form.email( placeholder="Digite seu email" ) }}
+                {{ form.senha( placeholder="Digite sua Senha" ) }}
+            </div>
+
+            <div class="n-t-conta">
+                <p>Não tem conta clique <a href="{{ url_for('criar_conta') }}">aqui</a></p>
+            </div>
+
+            {{ form.btn_confirm( class="btn-login" ) }}
+    </form>
+
+
+    <script>
+        const formulario = document.querySelector(".cc-form");
+        setTimeout(()=>{
+            formulario.style.scale="1";
+        },1000)
+    </script>
+</body>
+</html>

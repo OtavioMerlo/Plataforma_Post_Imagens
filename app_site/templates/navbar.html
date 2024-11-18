@@ -1,0 +1,12 @@
+<nav>
+    <div class="center-nav-bar">
+        <div class="logo">
+            <h1><a href="{{ url_for('feed') }}"><span class="span-LO">LO</span>GO</a></h1>
+        </div>
+        <ul>
+            <li><a href="{{ url_for('feed') }}">Feed</a></li>
+            <li><a href="{{ url_for('perfil', id_usuario=current_user.id) }}">Perfil</a></li>
+            <li><a href="{{ url_for('logout') }}">Sair</a></li>
+        </ul>
+    </div>
+</nav>
